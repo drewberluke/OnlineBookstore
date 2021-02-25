@@ -58,8 +58,14 @@ namespace assignment5
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    //name: "default",
+                    //pattern: "{controller=Home}/{action=Index}/{id?}");
+                    //this is what alters the url appearence to make it look a little better
+                    "pagination",
+                    "P{page}",
+                    new { Controller = "Home", Action = "Index" });
+
+                endpoints.MapDefaultControllerRoute();
             });
 
             //call the seed data method so that the first time it is run it will check to make sure the

@@ -1,68 +1,86 @@
-﻿@*Andrew Luke
-IS423 - Sec 004
-Assignment 5
+﻿@*The Bootstrap styles that I used here that I have never used before are:
+*container
+*col
+*col-3
+*justify-content-evenly
+*m-3
+*row
+*m-1
 
-Create a web app for an online bookstore. For each book, we want to store the following
-information:
-• Title
-• Author
-• Publisher
-• ISBN
-• Classification/Category
-• Price
-All fields are required. Use the “Model First” approach described in the videos to set up and
-create the database that we will use for the app. The ISBN needs to be entered in a valid format.
-Include a “BookId” field that can be used as a primary key. Use good normalization principles
-(i.e. no non-atomic fields, no repeating groups).
-Seed the database using some of Prof. Hilton’s favorite books he’s read over the last few years
-(found in the table on the next page).
-Once the database has been created, list out all the books from the database on the Index view.
-Be sure to style your page using Bootstrap (#notcovered in the videos, but there is a section at
-the end of Chapter 7 in the Freeman textbook that goes over some styling techniques.)*@
+Andrew Luke
+    IS413 - Sec 004
+    Assignment 6
+
+    Continuing the Bookstore project we started in Assignment #5, we are going to add Pagination to
+    our web app (using Tag Helpers) so that the number of pages and navigation is automatically
+    generated based on the number of items in the list.
+    We will display 5 items per page.
+    Improve the URLs so that the user can type /P2 to access the second page and /P3 to access the
+    third page and so on.
+    Use Bootstrap to display the information in an attractive way. Use at least three new Bootstrap
+    commands that you have never used before that are different from those used in Chapter 7.
+    (#notcoveredinthevideos #notmeanttobedifficult – List the commands you used in the comments
+    when you submit the program.) The page navigation should function so that the current page is
+    highlighted in the list of page numbers, and that hovering over a page changes the appearance of
+    the link as well.
+    We want to start tracking the number of pages in the book as well. Update the model to store the
+    number of pages, and then update the database, and add the number of pages to the view.
+    After you have incorporated the Pagination, add three of your own favorite books to the
+    SeedData, and rebuild the database to test that the Pagination works as it should.
+
+*@
 
 @{
     ViewData["Title"] = "Home";
 }
-@model IQueryable<BookModel>
+@model BookListViewModel
 
 <div class="text-center">
     <h1 class="display-4">Spencer's Booklist</h1>
-    <br />
-    <table class="table table-hover table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Author<br />First Name</th>
-                <th scope="col">Author<br />Middle Name</th>
-                <th scope="col">Author<br />Last Name</th>
-                <th scope="col">ISBN</th>
-                <th scope="col">Classification</th>
-                <th scope="col">Category</th>
-                <th scope="col">Price</th>
-            </tr>
-        </thead>
-        @foreach (var x in Model)
-        {
-            <tr>
-                <td>@x.Id</td>
-                <td>@x.Title</td>
-                <td>@x.AuthorFirstName</td>
-                @if (x.AuthorMiddleName == "")
-                {
-                    <td>--</td>
-                }
-                else
-                {
-                    <td>@x.AuthorMiddleName</td>
-                }
-                <td>@x.AuthorLastName</td>
-                <td>@x.ISBN</td>
-                <td>@x.Classification</td>
-                <td>@x.Category</td>
-                <td>$@x.Price</td>
-            </tr>
-        }
-    </table>
 </div>
+    <div class="text-center">
+        <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+             page-class-normal="btn-outline-dark"
+             page-class-selected="btn-primary"
+             class="btn-group pull-right m-1"></div>
+    </div>
+<div class="m-1">
+    <div class="row justify-content-evenly" style="justify-content: space-evenly;">
+        @foreach (var x in Model.Books)
+        {
+
+            <div class="card col-3 col m-3">
+                <div class="card-content m-4">
+                    <small>#@x.Id</small>
+                    <h1>@x.Title</h1>
+
+                    <p><strong>Author First Name: </strong>@x.AuthorFirstName</p>
+                    @if (x.AuthorMiddleName == "")
+                    {
+                        <p><strong>Author Middle Name: </strong>--</p>
+                    }
+                    else
+                    {
+                        <p><strong>Author Middle Name: </strong>@x.AuthorMiddleName</p>
+                    }
+                    <p><strong>Author Last Name: </strong>@x.AuthorLastName</p>
+                    <p><strong>ISBN: </strong>@x.ISBN</p>
+                    <p><strong>Classification: </strong>@x.Classification</p>
+                    <p><strong>Category: </strong>@x.Category</p>
+                    <p><strong>Price: </strong>$@x.Price</p>
+                    <p><strong>Pages: </strong>@x.Pages</p>
+                </div>
+            </div>
+
+        }
+    </div>
+    <div class="text-center">
+        <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+             page-class-normal="btn-outline-dark"
+             page-class-selected="btn-primary"
+             class="btn-group pull-right m-1"></div>
+    </div>
+</div>
+
+
 

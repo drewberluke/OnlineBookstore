@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using assignment5.Models;
+using assignment5.Models.ViewModels;
 
 namespace assignment5.Controllers
 {
@@ -16,6 +17,9 @@ namespace assignment5.Controllers
         //create repo variable based on the book repo 
         private IBookRepository _repository;
 
+        //set the number of books per page to 5
+        public int ItemsPerPage = 5;
+
         //set repo equal to the book repo 
         public HomeController(ILogger<HomeController> logger, IBookRepository repository)
         {
@@ -24,7 +28,25 @@ namespace assignment5.Controllers
         }
 
         //send the results of the database query to the view
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
+        {
+            return View(new BookListViewModel
+            {
+                Books = _repository.Books
+                    .OrderBy(b => b.Id)
+                    .Skip((page -1) * ItemsPerPage)
+                    .Take(ItemsPerPage),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = ItemsPerPage,
+                    TotalNumItems = _repository.Books.Count()
+                }
+            });
+        }
+
+        //send the results of the database query to the view
+        public IActionResult assignment5()
         {
             return View(_repository.Books);
         }

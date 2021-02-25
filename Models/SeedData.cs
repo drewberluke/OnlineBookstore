@@ -33,7 +33,8 @@ namespace assignment5.Models
                         ISBN = "978-0451419439",
                         Category = "Classic",
                         Classification = "Fiction",
-                        Price = 9.95
+                        Price = 9.95,
+                        Pages = 1488
                     },
 
                     new BookModel
@@ -46,7 +47,8 @@ namespace assignment5.Models
                         ISBN = "978-0743270755",
                         Category = "Biography",
                         Classification = "Non-Fiction",
-                        Price = 14.58
+                        Price = 14.58,
+                        Pages = 944
                     },
 
                     new BookModel
@@ -59,7 +61,8 @@ namespace assignment5.Models
                         ISBN = "978-0553384611",
                         Category = "Biography",
                         Classification = "Non-Fiction",
-                        Price = 21.54
+                        Price = 21.54,
+                        Pages = 832
                     },
 
                     new BookModel
@@ -72,7 +75,8 @@ namespace assignment5.Models
                         ISBN = "978-0812981254",
                         Category = "Biography",
                         Classification = "Non-Fiction",
-                        Price = 11.61
+                        Price = 11.61,
+                        Pages = 864
                     },
 
                     new BookModel
@@ -85,7 +89,8 @@ namespace assignment5.Models
                         ISBN = "978-0812974492",
                         Category = "Historical",
                         Classification = "Non-Fiction",
-                        Price = 13.33
+                        Price = 13.33,
+                        Pages = 528
                     },
 
                     new BookModel
@@ -98,7 +103,8 @@ namespace assignment5.Models
                         ISBN = "978-0804171281",
                         Category = "Historical Fiction",
                         Classification = "Fiction",
-                        Price = 15.95
+                        Price = 15.95,
+                        Pages = 288
                     },
 
                     new BookModel
@@ -111,7 +117,8 @@ namespace assignment5.Models
                         ISBN = "978-1455586691",
                         Category = "Self-Help",
                         Classification = "Non-Fiction",
-                        Price = 14.99
+                        Price = 14.99,
+                        Pages = 304
                     },
 
                     new BookModel
@@ -124,7 +131,8 @@ namespace assignment5.Models
                         ISBN = "978-1455523023",
                         Category = "Self-Help",
                         Classification = "Non-Fiction",
-                        Price = 21.66
+                        Price = 21.66,
+                        Pages = 240
                     },
 
                     new BookModel
@@ -137,7 +145,8 @@ namespace assignment5.Models
                         ISBN = "978-1591847984",
                         Category = "Business",
                         Classification = "Non-Fiction",
-                        Price = 29.16
+                        Price = 29.16,
+                        Pages = 400
                     },
 
                     new BookModel
@@ -150,7 +159,51 @@ namespace assignment5.Models
                         ISBN = "978-0553393613",
                         Category = "Thrillers",
                         Classification = "Fiction",
-                        Price = 15.03
+                        Price = 15.03,
+                        Pages = 642
+                    },
+
+                    //Drew's three additional books
+                    new BookModel
+                    {
+                        Title = "How to Win Friends and Influence People",
+                        AuthorFirstName = "Dale",
+                        AuthorMiddleName = "",
+                        AuthorLastName = "Carnegie",
+                        Publisher = "Pocket Books",
+                        ISBN = "978-0671027032",
+                        Category = "Business",
+                        Classification = "Non-Fiction",
+                        Price = 11.85,
+                        Pages = 288
+                    },
+
+                    new BookModel
+                    {
+                        Title = "Shoe Dog",
+                        AuthorFirstName = "Phil",
+                        AuthorMiddleName = "",
+                        AuthorLastName = "Knight",
+                        Publisher = "Scribner",
+                        ISBN = "978-1501135910",
+                        Category = "Business",
+                        Classification = "Non-Fiction",
+                        Price = 29.00,
+                        Pages = 383
+                    },
+
+                    new BookModel
+                    {
+                        Title = "Atomic Habits",
+                        AuthorFirstName = "James",
+                        AuthorMiddleName = "",
+                        AuthorLastName = "Clear",
+                        Publisher = "Avery",
+                        ISBN = "978-0735211292",
+                        Category = "Self-Help",
+                        Classification = "Non-Fiction",
+                        Price = 18.06,
+                        Pages = 320
                     }
                 );
 

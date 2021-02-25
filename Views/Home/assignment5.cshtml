@@ -1,0 +1,68 @@
+﻿@*Andrew Luke
+    IS413 - Sec 004
+    Assignment 5
+
+    Create a web app for an online bookstore. For each book, we want to store the following
+    information:
+    • Title
+    • Author
+    • Publisher
+    • ISBN
+    • Classification/Category
+    • Price
+    All fields are required. Use the “Model First” approach described in the videos to set up and
+    create the database that we will use for the app. The ISBN needs to be entered in a valid format.
+    Include a “BookId” field that can be used as a primary key. Use good normalization principles
+    (i.e. no non-atomic fields, no repeating groups).
+    Seed the database using some of Prof. Hilton’s favorite books he’s read over the last few years
+    (found in the table on the next page).
+    Once the database has been created, list out all the books from the database on the Index view.
+    Be sure to style your page using Bootstrap (#notcovered in the videos, but there is a section at
+    the end of Chapter 7 in the Freeman textbook that goes over some styling techniques.)*@
+
+@{
+    ViewData["Title"] = "assignment5";
+}
+@model IQueryable<BookModel>
+
+<div class="text-center">
+    <h1 class="display-4">Spencer's Booklist</h1>
+    <br />
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author<br />First Name</th>
+                <th scope="col">Author<br />Middle Name</th>
+                <th scope="col">Author<br />Last Name</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Classification</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.Title</td>
+                <td>@x.AuthorFirstName</td>
+                @if (x.AuthorMiddleName == "")
+                {
+                    <td>--</td>
+                }
+                else
+                {
+                    <td>@x.AuthorMiddleName</td>
+                }
+                <td>@x.AuthorLastName</td>
+                <td>@x.ISBN</td>
+                <td>@x.Classification</td>
+                <td>@x.Category</td>
+                <td>$@x.Price</td>
+            </tr>
+        }
+    </table>
+</div>
+
