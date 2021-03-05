@@ -1,0 +1,26 @@
+﻿@model BookModel
+
+    <center>
+        <div class="card col-7 text-center col m-3">
+            <div class="card-content m-4">
+                <small>#@Model.Id</small>
+                <h1>@Model.Title</h1>
+
+                <p><strong>Author First Name: </strong>@Model.AuthorFirstName</p>
+                @if (Model.AuthorMiddleName == "")
+                {
+                    <p><strong>Author Middle Name: </strong>--</p>
+                }
+                else
+                {
+                    <p><strong>Author Middle Name: </strong>@Model.AuthorMiddleName</p>
+                }
+                <p><strong>Author Last Name: </strong>@Model.AuthorLastName</p>
+                <p><strong>ISBN: </strong>@Model.ISBN</p>
+                <p><strong>Classification: </strong>@Model.Classification</p>
+                <p><strong>Category: </strong>@Model.Category</p>
+                <p><strong>Price: </strong>$@Model.Price</p>
+                <p><strong>Pages: </strong>@Model.Pages</p>
+            </div>
+        </div>
+    </center>

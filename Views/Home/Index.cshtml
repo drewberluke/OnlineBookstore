@@ -38,49 +38,40 @@ Andrew Luke
 <div class="text-center">
     <h1 class="display-4">Spencer's Booklist</h1>
 </div>
-    <div class="text-center">
-        <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
-             page-class-normal="btn-outline-dark"
-             page-class-selected="btn-primary"
-             class="btn-group pull-right m-1"></div>
+<div style="display:flex; flex-direction:row">
+    <div class="col-3">
+        <br /><br />
+        <div style="position:fixed; width: 20%;" class="">
+            <vc:navigation-menu />
+        </div>
     </div>
-<div class="m-1">
-    <div class="row justify-content-evenly" style="justify-content: space-evenly;">
-        @foreach (var x in Model.Books)
-        {
-
-            <div class="card col-3 col m-3">
-                <div class="card-content m-4">
-                    <small>#@x.Id</small>
-                    <h1>@x.Title</h1>
-
-                    <p><strong>Author First Name: </strong>@x.AuthorFirstName</p>
-                    @if (x.AuthorMiddleName == "")
-                    {
-                        <p><strong>Author Middle Name: </strong>--</p>
-                    }
-                    else
-                    {
-                        <p><strong>Author Middle Name: </strong>@x.AuthorMiddleName</p>
-                    }
-                    <p><strong>Author Last Name: </strong>@x.AuthorLastName</p>
-                    <p><strong>ISBN: </strong>@x.ISBN</p>
-                    <p><strong>Classification: </strong>@x.Classification</p>
-                    <p><strong>Category: </strong>@x.Category</p>
-                    <p><strong>Price: </strong>$@x.Price</p>
-                    <p><strong>Pages: </strong>@x.Pages</p>
+    <div class="col-9">
+        <div class="text-center">
+            <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+                 page-class-normal="btn-outline-dark"
+                 page-class-selected="btn-primary"
+                 class="btn-group pull-right m-1"
+                 page-url-category="Model.Type">
+            </div>
+        </div>
+        <div class="m-1">
+            <div class="" style="justify-content: space-evenly;">
+                @*row justify-content-evenly*@
+                @foreach (var x in Model.Books)
+                {
+                    <partial name="BookList" model="x" />
+                }
+            </div>
+            <div class="text-center">
+                <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+                     page-class-normal="btn-outline-dark"
+                     page-class-selected="btn-primary"
+                     class="btn-group pull-right m-1"
+                     page-url-category="Model.Type">
                 </div>
             </div>
-
-        }
-    </div>
-    <div class="text-center">
-        <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
-             page-class-normal="btn-outline-dark"
-             page-class-selected="btn-primary"
-             class="btn-group pull-right m-1"></div>
+        </div>
     </div>
 </div>
-
 
 
