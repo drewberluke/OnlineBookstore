@@ -26,6 +26,12 @@ namespace assignment5.Models
         public string Category { get; set; }
         [Required]
         public string Classification { get; set; }
+
+        public static explicit operator BookModel(Cart.CartLine v)
+        {
+            throw new NotImplementedException();
+        }
+
         [Required]
         public double Price { get; set; }
         [Required]

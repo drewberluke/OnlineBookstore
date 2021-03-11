@@ -40,7 +40,7 @@ namespace assignment5.Infrastructure
             for (int i = 1; i <= PageModel.TotalPages; i++)
             {
                 TagBuilder tag = new TagBuilder("a");
-                PageUrlValues["page"] = i;
+                PageUrlValues["pagenum"] = i;
                 tag.Attributes["href"] = urlHelper.Action(PageAction, PageUrlValues);
                 tag.InnerHtml.Append(i.ToString());
 

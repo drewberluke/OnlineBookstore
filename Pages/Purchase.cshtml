@@ -1,0 +1,57 @@
+﻿@page
+@model assignment5.Pages.PurchaseModel
+@{
+}
+
+<h2>Your Cart</h2>
+<div style="margin: 3rem;">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>Book</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+                <th style="width: 6rem;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Cart.Lines.Count() == 0)
+            {
+                <tr>
+                    <td colspan="5" class="text-center">Your cart is empty</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var line in Model.Cart.Lines)
+                {
+                    <tr>
+                        <td class="text-left">@line.Quantity</td>
+                        <td class="text-left">@line.Book.Title</td>
+                        <td class="text-right">@line.Book.Price.ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</td>
+                        <td class="text-right">@((line.Quantity * line.Book.Price).ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us")))</td>
+                        <td>
+                            <form asp-page-handler="Remove" method="post">
+                                <input type="hidden" name="Id" value="@line.Book.Id" />
+                                <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                                <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total:</td>
+                <td class="text-right">@Model.Cart.ComputeTotal().ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>
