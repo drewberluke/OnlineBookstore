@@ -1,8 +1,4 @@
-﻿@page
-@{
-}
-
-@model Cart
+﻿@model Cart
 
 <div class="">
     @if (Model.Lines.Count() > 0)
@@ -13,6 +9,7 @@
                     @Model.ComputeTotal().ToString("c", System.Globalization.CultureInfo.GetCultureInfo("en-us"))
                 </small>
             }
-    <a class="btn btn-sm btn-default navbar-btn" asp-action="Purchase"
-       asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()"><i class="btn-default fa-shopping-cart"></i></a>
+    <a class="btn btn-default navbar-btn" href="/Purchase"><i class="fa fa-shopping-cart"></i></a>
 </div>
+
+@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
